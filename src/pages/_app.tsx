@@ -5,10 +5,14 @@ import apolloClient from 'lib/apollo';
 
 import 'styles/globals.css';
 
+import Layout from 'components/Layout';
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={apolloClient}>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </ApolloProvider>
   );
 }

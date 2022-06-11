@@ -1,8 +1,8 @@
 import type { GetStaticProps, NextPage } from 'next';
-import Image from 'next/image';
 
 import apolloClient from 'lib/apollo';
 import GET_ALL_PLAYERS from 'queries/getAllPlayers';
+import PlayersList from 'components/PlayersList';
 
 type HomeProps = {
   players: Player[];
@@ -11,19 +11,12 @@ type HomeProps = {
 const Home: NextPage<HomeProps> = ({ players = [] }) => {
   return (
     <div>
-      {players.map((player) => (
-        <div key={player.id}>
-          <h1>
-            {player.firstname} {player.lastname}
-          </h1>
-          <Image
-            src={player.picture.url}
-            alt={player.shortname}
-            width={120}
-            height={120}
-          />
-        </div>
-      ))}
+      <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate pb-6">
+        Players
+      </h2>
+      <div className="overflow-x-auto">
+        <PlayersList players={players} />
+      </div>
     </div>
   );
 };

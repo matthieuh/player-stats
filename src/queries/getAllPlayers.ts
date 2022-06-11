@@ -18,6 +18,13 @@ export default gql`
       picture {
         url
       }
+      stats {
+        rank
+        points
+        weight
+        height
+        age
+      }
     }
   }
 `;
