@@ -1,4 +1,5 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client';
+import fetch from 'cross-fetch';
+import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 
 if (
   typeof process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT !== 'string' ||
@@ -8,7 +9,7 @@ if (
 }
 
 const apolloClient = new ApolloClient({
-  uri: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT,
+  link: new HttpLink({ uri: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT, fetch }),
   cache: new InMemoryCache(),
 });
 
