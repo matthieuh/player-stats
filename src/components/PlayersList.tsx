@@ -10,6 +10,7 @@ const Players: FC<PlayersProps> = ({ players = [] }) => {
   const rows = useMemo(
     () =>
       players
+        .slice()
         .sort((a, b) => a.stats.rank - b.stats.rank)
         .map((player) => <PlayerRow key={player.id} player={player} />),
     [players]

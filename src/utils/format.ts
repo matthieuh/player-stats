@@ -18,6 +18,8 @@ export const formatHeight = (height: number) => {
     style: 'unit',
     unit: 'meter',
     unitDisplay: 'short',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
   });
 };
 
@@ -26,6 +28,7 @@ export const formatWeight = (weight: number) => {
     style: 'unit',
     unit: 'kilogram',
     unitDisplay: 'short',
+    maximumFractionDigits: 0,
   });
 };
 
