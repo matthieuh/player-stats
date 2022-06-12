@@ -17,8 +17,8 @@ const PlayerMatchesList: FC<PlayerMatchesListProps> = ({
         .slice()
         .sort((a, b) => b.startTime.localeCompare(a.startTime))
         .map((match) => (
-          <li>
-            <PlayerMatchRow key={match.id} player={player} match={match} />
+          <li key={match.id} data-testid={`player-match-row-${match.id}`}>
+            <PlayerMatchRow player={player} match={match} />
           </li>
         )),
     [matches]

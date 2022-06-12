@@ -7,12 +7,12 @@ import GET_ALL_MATCHES from 'queries/getAllMatches';
 import PlayerMatchesList from 'components/PlayerMatchesList';
 import { useMemo } from 'react';
 
-type PlayerDetailsProps = {
+type PlayerMatchesProps = {
   player: Player;
   matches: Match[];
 };
 
-const PlayerDetails: NextPage<PlayerDetailsProps> = ({ player, matches }) => {
+const PlayerMatches: NextPage<PlayerMatchesProps> = ({ player, matches }) => {
   const winsNb = useMemo(
     () => matches.filter((m) => m.winner.id === player.id).length,
     [player, matches]
@@ -25,7 +25,7 @@ const PlayerDetails: NextPage<PlayerDetailsProps> = ({ player, matches }) => {
         <h2 className="flex-1 text-2xl font-bold leading-7 text-gray-900 sm:truncate">
           {player.firstname} {player.lastname} matches:
         </h2>
-        <p className="px-4">
+        <p className="px-4" data-testid="winRate">
           <span className="text-green-600">{winsNb}W</span>
           <span className="text-slate-400"> / </span>
           <span className="text-red-600">{losesNb}L</span>
@@ -75,4 +75,4 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-export default PlayerDetails;
+export default PlayerMatches;
