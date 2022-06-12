@@ -35,3 +35,20 @@ export const formatWeight = (weight: number) => {
 export const formatNumber = (number: number) => {
   return number.toLocaleString(getLang());
 };
+
+export const formatDate = (dateString: string) => {
+  return new Intl.DateTimeFormat(getLang()).format(new Date(dateString));
+};
+
+export const formatDuration = (
+  startDateString: string,
+  endDateString: string
+) => {
+  const diffMs = Math.abs(
+    new Date(endDateString).valueOf() - new Date(startDateString).valueOf()
+  );
+  const diffHours = diffMs / 36e5;
+  const hours = Math.floor(diffHours);
+  const minutes = Math.floor((diffHours - hours) * 60);
+  return `${hours}h ${minutes}min`;
+};

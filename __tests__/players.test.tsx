@@ -1,4 +1,4 @@
-import { render, screen, within } from '@testing-library/react';
+import { render, within } from '@testing-library/react';
 import Home from 'pages/index';
 import players from './fixtures/players';
 

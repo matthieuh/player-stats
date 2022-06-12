@@ -6,12 +6,17 @@ type PlayersProps = {
   players: Player[];
 };
 
-const Players: FC<PlayersProps> = ({ players = [] }) => {
+const PlayersList: FC<PlayersProps> = ({ players = [] }) => {
   const rows = useMemo(
     () =>
       players
         .slice()
-        .sort((a, b) => a.stats.rank - b.stats.rank)
+        .sort((a, b) => {
+          if (!a.stats?.rank || !b.stats?.rank) {
+            return 0;
+          }
+          return a?.stats?.rank - b?.stats?.rank
+        })
         .map((player) => <PlayerRow key={player.id} player={player} />),
     [players]
   );
@@ -65,4 +70,4 @@ const Players: FC<PlayersProps> = ({ players = [] }) => {
   );
 };
 
-export default Players;
+export default PlayersList;
