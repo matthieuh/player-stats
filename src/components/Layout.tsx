@@ -1,8 +1,9 @@
+import Link from 'next/link';
 import { FC } from 'react';
 
 type LayoutProps = {
   children: React.ReactNode;
-}
+};
 
 const Layout: FC<LayoutProps> = ({ children }) => {
   return (
@@ -10,7 +11,11 @@ const Layout: FC<LayoutProps> = ({ children }) => {
       <div className="bg-indigo-600 pb-32">
         <header className="py-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold text-white">Player Stats</h1>
+            <Link href="/" passHref>
+              <a>
+                <h1 className="text-3xl font-bold text-white">Player Stats</h1>
+              </a>
+            </Link>
           </div>
         </header>
       </div>

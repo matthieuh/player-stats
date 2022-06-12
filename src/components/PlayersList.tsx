@@ -6,7 +6,7 @@ type PlayersProps = {
   players: Player[];
 };
 
-const Players: FC<PlayersProps> = ({ players = [] }) => {
+const PlayersList: FC<PlayersProps> = ({ players = [] }) => {
   const rows = useMemo(
     () =>
       players
@@ -65,4 +65,4 @@ const Players: FC<PlayersProps> = ({ players = [] }) => {
   );
 };
 
-export default Players;
+export default PlayersList;
