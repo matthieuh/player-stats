@@ -3,16 +3,15 @@ import React from 'react';
 
 type PlayerAvatarProps = {
   player: Player;
-  size?: number;
 };
 
-const PlayerAvatar: React.FC<PlayerAvatarProps> = ({ player, size = 16 }) => {
+const PlayerAvatar: React.FC<PlayerAvatarProps> = ({ player }) => {
   if (!player?.picture?.url) {
     return null;
   }
 
   return (
-    <figure className={`relative w-${size} h-${size} flex-shrink-0 mx-auto`}>
+    <figure className="relative w-16 h-16 flex-shrink-0 mx-auto">
       <Image
         className="rounded-full"
         src={player.picture.url}
