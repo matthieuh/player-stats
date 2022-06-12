@@ -13,19 +13,25 @@ type PlayerRowProps = {
 };
 
 const PlayerRow: FC<PlayerRowProps> = ({ player }) => {
-  const rank = useMemo(() => formatNumber(player.stats.rank), [player]);
-  const age = useMemo(() => formatAge(player.stats.age), [player.stats.age]);
+  const rank = useMemo(
+    () => player?.stats?.rank && formatNumber(player.stats.rank),
+    [player?.stats?.rank]
+  );
+  const age = useMemo(
+    () => player?.stats?.age && formatAge(player.stats.age),
+    [player?.stats?.age]
+  );
   const height = useMemo(
-    () => formatHeight(player.stats.height),
-    [player.stats.height]
+    () => player?.stats?.height && formatHeight(player.stats.height),
+    [player?.stats?.height]
   );
   const weight = useMemo(
-    () => formatWeight(player.stats.weight),
-    [player.stats.weight]
+    () => player?.stats?.weight && formatWeight(player.stats.weight),
+    [player?.stats?.weight]
   );
   const points = useMemo(
-    () => formatNumber(player.stats.points),
-    [player.stats.points]
+    () => player?.stats?.points && formatNumber(player.stats.points),
+    [player?.stats?.points]
   );
 
   return (
@@ -71,12 +77,12 @@ const PlayerRow: FC<PlayerRowProps> = ({ player }) => {
       </td>
       <td>
         <Link href={`/players/${player.id}/matches`} passHref>
-        <a
-          type="button"
-          className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        >
-          Matches
-        </a>
+          <a
+            type="button"
+            className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            Matches
+          </a>
         </Link>
       </td>
     </tr>

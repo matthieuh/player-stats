@@ -14,7 +14,7 @@ const PlayerMatchRow: FC<PlayerMatchRowProps> = ({ player, match }) => {
   );
   const opponent = useMemo(
     () => match.players.find((p) => p.id !== player.id) as Player,
-    [match.players]
+    [player.id, match.players]
   );
 
   const date = useMemo(() => formatDate(match.startTime), [match.startTime]);

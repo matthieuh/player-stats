@@ -21,7 +21,7 @@ const PlayerMatchesList: FC<PlayerMatchesListProps> = ({
             <PlayerMatchRow player={player} match={match} />
           </li>
         )),
-    [matches]
+    [matches, player]
   );
 
   return (
